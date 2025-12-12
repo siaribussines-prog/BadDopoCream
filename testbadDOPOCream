@@ -1,0 +1,58 @@
+package test;
+
+import .*domain;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Unit Test of BadDOPOCream
+ * Juan Esteban Rodriguez- Sara Gonzalez
+ */
+
+public class BadDOPOCreamTest{
+
+    private BadDOPOCream game;
+
+    @Before
+    public void shouldSetUp(){
+        game = new BadDOPOCream();
+    }
+
+    @Test
+    public void shouldStartScoreZero(){
+        assertEquals(0, game.getScore())
+    }
+
+    @Test
+    public void shouldAddHumanPlayer(){
+        IceCream player1 = new IceCream("P1");
+        game.addHumanPlayer(player1);
+        assertEquals(1, game.getPlayers().size());
+    }
+
+    @Test
+    public void shouldNotAddNullHumanPlayer(){
+        game.addHumanPlayer(null);
+        assertEquals(0, game.getPlayers().size() )
+    }
+
+    @Test
+    public void shouldConfigurateMode(){
+        game.setMode(BadDopoCream.GameMode.PLAYER);
+        assertEquals(BadDopoCream.GameMode.PLAYER, game.getMode());
+    }
+
+    @Test
+    public void shouldRemoveHumanPlayer(){
+        IceCream player1 = new IceCream("P1");
+        game.addHumanPlayer(player1);
+        game.removePlayer(player1); 
+        assertEquals(0, game.getPlayers().size());
+    }
+
+
+}
+
